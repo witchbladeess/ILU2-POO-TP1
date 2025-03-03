@@ -5,6 +5,7 @@ import personnages.Druide;
 import personnages.Gaulois;
 import villagegaulois.Etal;
 import villagegaulois.Village;
+import villagegaulois.VillageSansChefException;
 
 public class Scenario {
 
@@ -24,8 +25,11 @@ public class Scenario {
 		village.ajouterHabitant(obelix);
 		village.ajouterHabitant(druide);
 		village.ajouterHabitant(abraracourcix);
+		try {
 		village.afficherVillageois();
-
+		} catch(VillageSansChefException e){
+			System.out.println("erreur" + e.getMessage());
+		}
 		System.out.println(village.rechercherVendeursProduit("fleurs"));
 		System.out.println(village.installerVendeur(bonemine, "fleurs", 20));
 		System.out.println(village.rechercherVendeursProduit("fleurs"));
@@ -36,7 +40,11 @@ public class Scenario {
 		System.out.println(village.rechercherVendeursProduit("fleurs"));
 		Etal etalFleur = village.rechercherEtal(bonemine);
 		System.out.println(etalFleur.acheterProduit(10, abraracourcix));
-		System.out.println(etalFleur.acheterProduit(15, obelix));
+		try {
+		System.out.println(etalFleur.acheterProduit(-2, obelix));
+		} catch (IllegalArgumentException e) {
+			System.out.println("erreur: illegal argument exception");
+		}
 		System.out.println(etalFleur.acheterProduit(15, assurancetourix));
 		System.out.println(village.partirVendeur(bonemine));
 		System.out.println(village.afficherMarche());

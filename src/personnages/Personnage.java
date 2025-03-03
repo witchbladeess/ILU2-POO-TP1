@@ -1,5 +1,6 @@
 package personnages;
 
+
 public class Personnage {
 	protected String nom;
 	protected int force;
@@ -32,3 +33,4 @@ public class Personnage {
 		return nom + " : ";
 	}
 }
+
