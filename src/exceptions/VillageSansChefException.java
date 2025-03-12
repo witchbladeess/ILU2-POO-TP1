@@ -1,4 +1,4 @@
-package villagegaulois;
+package exceptions;
 
 public class VillageSansChefException extends Exception {
     public VillageSansChefException(String message) {

@@ -1,11 +1,11 @@
 package histoire;
 
+import exceptions.VillageSansChefException;
 import personnages.Chef;
 import personnages.Druide;
 import personnages.Gaulois;
 import villagegaulois.Etal;
 import villagegaulois.Village;
-import villagegaulois.VillageSansChefException;
 
 public class Scenario {
 
@@ -40,12 +40,9 @@ public class Scenario {
 		System.out.println(village.rechercherVendeursProduit("fleurs"));
 		Etal etalFleur = village.rechercherEtal(bonemine);
 		System.out.println(etalFleur.acheterProduit(10, abraracourcix));
-		try {
-		System.out.println(etalFleur.acheterProduit(-2, obelix));
-		} catch (IllegalArgumentException e) {
-			System.out.println("erreur: illegal argument exception");
-		}
+		System.out.println(etalFleur.acheterProduit(15, obelix));
 		System.out.println(etalFleur.acheterProduit(15, assurancetourix));
+
 		System.out.println(village.partirVendeur(bonemine));
 		System.out.println(village.afficherMarche());
 	}

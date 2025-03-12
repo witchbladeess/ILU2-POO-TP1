@@ -1,5 +1,6 @@
 package villagegaulois;
 
+import exceptions.VillageSansChefException;
 import personnages.Chef;
 import personnages.Gaulois;
 
@@ -67,7 +68,7 @@ public class Village {
     
     
     
-   private class Marche{
+   private static class Marche{
 	   private Etal[] etals;
 	   // Constructor
 	   private Marche(int nbEtals) {
@@ -76,7 +77,7 @@ public class Village {
 			   etals[i] = new Etal();
 		   }
 	   }
-	   void utiliserEtal(int indiceEtal, Gaulois vendeur, String produit, int nbProduit) {
+	   private void utiliserEtal(int indiceEtal, Gaulois vendeur, String produit, int nbProduit) {
 		   if(indiceEtal >= 0 && indiceEtal <etals.length && !etals[indiceEtal].isEtalOccupe()) {
 			   etals[indiceEtal].occuperEtal(vendeur, produit, nbProduit);
 	
@@ -154,7 +155,6 @@ public class Village {
   public String partirVendeur(Gaulois vendeur) {
 	   Etal etal = marche.trouverVendeur(vendeur);
        if (etal != null) {
-       	System.out.println("Le vendeur" + vendeur.getNom() + "quitte son étale.");
            return etal.libererEtal();
        }
        return vendeur.getNom() + " n'a pas d'étal.";
